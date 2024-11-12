@@ -1,5 +1,5 @@
 # Ignore everything in sites
-sites/
+/sites/
 
 # Track docker-compose files
 !docker-compose.yml
@@ -7,7 +7,7 @@ sites/
 
 # Track nginx configs
 !nginx-proxy/
-!nginx-proxy/**/*.conf
+!nginx-proxy/conf.d/sites/*.conf
 
 # Track docker configs
 !docker/

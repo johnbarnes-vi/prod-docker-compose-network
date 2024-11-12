@@ -49,3 +49,22 @@ services:
     # env_file commented out until needed
     # env_file:
     #   - ./sites/lonestarstatuary/server/.env
+    
+
+
+  boilerplate-frontend:
+    build:
+      context: ./sites/boilerplate/react-app
+      dockerfile: ../../../docker/boilerplate/react-app.Dockerfile
+    depends_on:
+      - boilerplate-backend
+
+  boilerplate-backend:
+    build:
+      context: ./sites/boilerplate/server
+      dockerfile: ../../../docker/boilerplate/server.Dockerfile
+    environment:
+      - DOCKER_ENV=true
+    # env_file commented out until needed
+    # env_file:
+    #   - ./sites/boilerplate/server/.env
