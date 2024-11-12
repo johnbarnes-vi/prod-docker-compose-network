@@ -46,6 +46,32 @@ cd ~/production/sites/
 git clone your-website-repo example
 ```
 
+3. Configure DNS:
+
+   a. Add domain to DigitalOcean:
+   - Go to Networking > Domains
+   - In the "Add a Domain" field, enter your domain name (e.g., example.com)
+   - Select your project from the dropdown
+   - Click "Add Domain"
+
+   b. Update nameservers at your domain registrar:
+   ```
+   ns1.digitalocean.com
+   ns2.digitalocean.com
+   ns3.digitalocean.com
+   ```
+   
+   c. Add DNS records in DigitalOcean:
+   - In the domain's DNS records section:
+   - Add an A record:
+     * Hostname: @ (or leave blank)
+     * Will direct to: [Select your droplet]
+   - Add a CNAME record:
+     * Hostname: www
+     * Is an alias of: @ (or your naked domain)
+   
+   d. DNS propagation can take up to 48 hours, but typically completes within a few hours
+   
 ## Website Development
 
 Each website in the `sites/` directory can be its own independent git repository. The `sites/` directory is ignored in the main infrastructure repository to allow for this separation.
