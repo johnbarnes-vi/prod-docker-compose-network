@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-proxy/conf.d:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt:ro  # Direct mount of Let's Encrypt certs
+    depends_on:
+      - myflashpal-frontend
+
+
+
+  myflashpal-frontend:
+    build: ./sites/myflashpal/react-app
+    depends_on:
+      - myflashpal-backend
+
+  myflashpal-backend:
+    build: ./sites/myflashpal/server
+    environment:
+      - DOCKER_ENV=true
+    env_file:
+      - ./sites/myflashpal/server/.env
+    volumes:
+      - ./sites/myflashpal/server/X509-cert-1753682967918674388.pem:/certs/X509-cert-1753682967918674388.pem
+
+
+
+  lonestarstatuary-frontend:
+    build: ./sites/lonestarstatuary/react-app
+    depends_on:
+      - lonestarstatuary-backend
+
+  lonestarstatuary-backend:
+    build: ./sites/lonestarstatuary/server
+    environment:
+      - DOCKER_ENV=true
+    # env_file commented out until needed
+    # env_file:
+    #   - ./sites/lonestarstatuary/server/.env
