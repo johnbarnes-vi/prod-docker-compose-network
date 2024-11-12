@@ -10,12 +10,18 @@ This repository contains the infrastructure setup for hosting multiple websites 
 │   ├── myflashpal/
 │   │   ├── react-app.Dockerfile
 │   │   └── server.Dockerfile
+│   ├── .../
 │   └── lonestarstatuary/
+│       ├── react-app.Dockerfile
+│       └── server.Dockerfile
 ├── docker-compose.yml         # Main docker compose file
 ├── nginx-proxy/              # Nginx reverse proxy configs
 │   └── conf.d/
 │       ├── default.conf
-│       └── sites/*.conf
+│       └── sites/
+│           ├── myflashpal.conf
+│           ├── ...
+│           └── lonestarstatuary.conf
 └── sites/                    # Individual site repositories
     └── [not tracked in git]  # Clone actual site repos here using service names
 ```
@@ -140,6 +146,7 @@ CMD ["node", "index.js"]
 After making changes:
 ```bash
 cd ~/production
+docker-compose down
 docker-compose up -d --build
 ```
 
