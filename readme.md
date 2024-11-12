@@ -78,7 +78,7 @@ certbot certonly --standalone \
     -d www.myflashpal.com \
     -d lonestarstatuary.com \
     -d www.lonestarstatuary.com \
-    -d ... (insert all domain names in this list) \
+    -d ... (insert all domain names to this list) \
     -d example.com \
     -d www.example.com
 ```
