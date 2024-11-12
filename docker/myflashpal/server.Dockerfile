@@ -1,4 +1,4 @@
-# ~/mfp/sites/myflashpal/server/Dockerfile
+# ~/production/sites/myflashpal/server/Dockerfile
 
 # Step 1: Use an official Node runtime as a parent image with specific version 20.10.0
 FROM node:20.10.0

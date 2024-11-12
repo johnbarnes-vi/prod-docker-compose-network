@@ -1,4 +1,5 @@
-# ~/mfp/sites/lonestarstatuary/server/Dockerfile
+# ~/production/sites/lonestarstatuary/server/Dockerfile
+
 FROM node:20.10.0
 WORKDIR /app
 # Create minimal express server

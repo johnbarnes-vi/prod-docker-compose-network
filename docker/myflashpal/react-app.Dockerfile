@@ -1,4 +1,4 @@
-# ~/mfp/sites/myflashpal/react-app/Dockerfile
+# ~/production/sites/myflashpal/react-app/Dockerfile
 
 # Build stage
 FROM node:20.10.0 as build
