@@ -1,19 +1,19 @@
-# First ignore everything in sites directory
-sites/*
-
-# Then explicitly track Dockerfiles in specific subdirectories
-!sites/*/react-app/Dockerfile
-!sites/*/server/Dockerfile
-
-# Track nginx configuration files
-!nginx-proxy/
-!nginx-proxy/**/*.conf
+# Ignore everything in sites
+sites/
 
 # Track docker-compose files
 !docker-compose.yml
 !docker-compose.yaml
 
-# Ignore common files and directories that might appear
+# Track nginx configs
+!nginx-proxy/
+!nginx-proxy/**/*.conf
+
+# Track docker configs
+!docker/
+!docker/**/*
+
+# Common excludes
 .env
 .env.*
 *.log
