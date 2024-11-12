@@ -16,14 +16,14 @@ services:
   myflashpal-frontend:
     build:
       context: ./sites/myflashpal/react-app
-      dockerfile: ../../docker/myflashpal/react-app.Dockerfile
+      dockerfile: ../../../docker/myflashpal/react-app.Dockerfile
     depends_on:
       - myflashpal-backend
 
   myflashpal-backend:
     build:
       context: ./sites/myflashpal/server
-      dockerfile: ../../docker/myflashpal/server.Dockerfile
+      dockerfile: ../../../docker/myflashpal/server.Dockerfile
     environment:
       - DOCKER_ENV=true
     env_file:
@@ -36,14 +36,14 @@ services:
   lonestarstatuary-frontend:
     build:
       context: ./sites/lonestarstatuary/react-app
-      dockerfile: ../../docker/lonestarstatuary/react-app.Dockerfile
+      dockerfile: ../../../docker/lonestarstatuary/react-app.Dockerfile
     depends_on:
       - lonestarstatuary-backend
 
   lonestarstatuary-backend:
     build:
       context: ./sites/lonestarstatuary/server
-      dockerfile: ../../docker/lonestarstatuary/server.Dockerfile
+      dockerfile: ../../../docker/lonestarstatuary/server.Dockerfile
     environment:
       - DOCKER_ENV=true
     # env_file commented out until needed
