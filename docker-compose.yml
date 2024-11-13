@@ -10,6 +10,8 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro  # Direct mount of Let's Encrypt certs
     depends_on:
       - myflashpal-frontend
+      - lonestarstatuary-frontend
+      - boilerplate-frontend
 
 
 
