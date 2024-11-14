@@ -1,4 +1,9 @@
 version: '3.8'
+
+# Would normally be at bottom of YAML, but `add-site.sh` needs `services:` to be at EOF
+volumes:
+  lonestar_uploads:
+
 services:
   nginx-proxy:
     image: nginx:alpine
@@ -8,6 +13,7 @@ services:
     volumes:
       - ./nginx-proxy/conf.d:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt:ro  # Direct mount of Let's Encrypt certs
+      - lonestar_uploads:/var/www/lonestar_uploads
     depends_on:
       - myflashpal-frontend
       - lonestarstatuary-frontend
@@ -48,6 +54,9 @@ services:
       dockerfile: ../../../docker/lonestarstatuary/server.Dockerfile
     environment:
       - DOCKER_ENV=true
+      - UPLOAD_DIR=/app/uploads
+    volumes:
+      - lonestar_uploads:/app/uploads
     # env_file commented out until needed
     # env_file:
     #   - ./sites/lonestarstatuary/server/.env
