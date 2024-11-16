@@ -43,23 +43,22 @@ services:
 
   lonestarstatuary-frontend:
     build:
-      context: ./sites/lonestarstatuary/react-app
-      dockerfile: ../../../docker/lonestarstatuary/react-app.Dockerfile
+      context: ./sites/lonestarstatuary
+      dockerfile: ../../docker/lonestarstatuary/react-app.Dockerfile
     depends_on:
       - lonestarstatuary-backend
 
   lonestarstatuary-backend:
     build:
-      context: ./sites/lonestarstatuary/server
-      dockerfile: ../../../docker/lonestarstatuary/server.Dockerfile
+      context: ./sites/lonestarstatuary
+      dockerfile: ../../docker/lonestarstatuary/server.Dockerfile
     environment:
       - DOCKER_ENV=true
       - UPLOAD_DIR=/app/uploads
     volumes:
       - lonestar_uploads:/app/uploads
-    # env_file commented out until needed
-    # env_file:
-    #   - ./sites/lonestarstatuary/server/.env
+    env_file:
+      - ./sites/lonestarstatuary/server/.env
     
 
 
